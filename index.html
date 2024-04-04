@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form>
+      <div>
+        <label for="card_number">Creditcard number:</label>
+        <input type="text" id="card_number" maxlength="16" />
+      </div>
+
+      <div>
+        <label for="cvv" maxlength="3">CVV:</label>
+        <input type="text" id="cvv" />
+      </div>
+
+      <div>
+        <label for="date" maxlength="8">Date:</label>
+        <input type="text" id="date" />
+      </div>
+    </form>
+
+    <script>
+      const cardNumber = document.querySelector("#card_number");
+      const cvv = document.querySelector("#cvv");
+      const date = document.querySelector("#date");
+
+      //focus til de to første felter
+      function handleInput(inputField, nextField, limit) {
+        inputField.addEventListener("input", function () {
+          if (inputField.value.length === limit) {
+            nextField.focus();
+          }
+        });
+      }
+
+      handleInput(cardNumber, cvv, 16);
+      handleInput(cvv, date, 3);
+
+      // blur til det sidste felt
+      function handleBlur(inputField, nextField, limit) {
+        inputField.addEventListener("input", function () {
+          if (inputField.value.length === limit) {
+            nextField.blur();
+          }
+        });
+      }
+
+      handleBlur(date, date, 8);
+    </script>
+
+    <style>
+      form {
+        display: flex;
+        flex-direction: column;
+        max-width: 20rem;
+        gap: 0.3rem;
+      }
+
+      input:focus {
+        outline-color: rgb(3, 141, 175);
+      }
+    </style>
+  </body>
+</html>
