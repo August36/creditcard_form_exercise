@@ -30,7 +30,7 @@
 
       //focus til de to første felter
       function handleInput(inputField, nextField, limit) {
-        inputField.addEventListener("input", function () {
+        inputField.addEventListener("input", () => {
           if (inputField.value.length === limit) {
             nextField.focus();
           }
@@ -42,7 +42,7 @@
 
       // blur til det sidste felt
       function handleBlur(inputField, nextField, limit) {
-        inputField.addEventListener("input", function () {
+        inputField.addEventListener("input", () => {
           if (inputField.value.length === limit) {
             nextField.blur();
           }
